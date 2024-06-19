@@ -1,0 +1,33 @@
+import pdfrw
+print("Module Imported")
+
+input_pdf = r"Location"
+output_pdf = r"Output location"
+
+#Read the fillable field
+
+read_pdf = pdfrw.PdfReader(input_pdf)
+print ("PDF can be read!")
+
+#access the form field via "annotations"
+annotations = read_pdf.pages[0]['/Annots']
+
+# to append index into fillable field
+fields = []
+    
+for i, annotation in enumerate(annotations):
+        if annotation['/Subtype'] == '/Widget':
+            field = annotation.get('/T')
+            if field:
+                fields.append((i, field[1:-1]))  # Remove parentheses from field name
+print("#################### Raw Result #####################")
+print(fields)
+print("#################### End of Raw Result #####################")
+
+#turn into proper index and fillable field naming
+
+for x, y in fields:
+     print(f"Index: {x} | Name: {y}")
+
+
+# attempt to rename field
