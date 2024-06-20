@@ -1,16 +1,22 @@
-# Importing the module
+# 01 Importing the module
 import pdfrw
 
-# Location of PDF file
+#002 Location of PDF file
 input_pdf_path =  r"location"
 
-# Output location of PDF file
+#003 Output location of PDF file
 output_pdf_path = r"location\output.pdf"
 
-# Access annotations (Form Field)
+##004 Read the PDF file
+read_pdf = pdfrw.PdfReader(input_pdf_path)
+
+#005 Access annotations (Form Field)
+annotations = read_pdf.pages[0]['/Annots']
+
+#006 Access annotations (Form Field)
 annotations = template_pdf.pages[0]['/Annots']
 
-# List filable fields with index number for easy trancking and modifying the fillable field
+#007 List filable fields with index number for easy trancking and modifying the fillable field
 fields = []
 for i, annotation in enumerate(annotations):
     if annotation['/Subtype'] == '/Widget':
