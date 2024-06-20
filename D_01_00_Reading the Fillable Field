@@ -1,0 +1,9 @@
+# Importing the module
+import pdfrw
+
+# Location of PDF file
+input_pdf_path =  r"location"
+
+# Output location of PDF file
+output_pdf_path = r"location\output.pdf"
+
